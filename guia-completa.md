@@ -67,7 +67,7 @@ cd maneja-tus-gastos
 cp backend/.env.example backend/.env
 
 # 3. Levantar todo
-docker-compose up --build
+docker-compose up -d --build
 ```
 
 | Servicio    | URL                          |
@@ -119,20 +119,20 @@ firebase login
 ```bash
 cd frontend
 ```
-- "default": "maneja-tus-gastos" modificar esto en .firebaserc
+- "default": "maneja-tus-gastos-gomez" modificar esto en .firebaserc
 
 ```bash
 firebase init hosting
 ```
 
 Responder:
-- **Project**: seleccionar `maneja-tus-gastos`
+- **Project**: seleccionar `maneja-tus-gastos-gomez`
 - **Public directory**: `dist/frontend/browser`
 - **Single-page app**: `Yes`
 - **GitHub automatic deploys**: `No`
 - **Overwrite index.html**: `No`
 
-Esto actualiza `.firebaserc` con tu project ID real.
+Esto actualiza `.firebaserc` con tu project ID real. en caso de que no funcione lo anterior
 
 ### Paso 4 — Service Account para GitHub Actions
 1. Firebase Console → ⚙️ **Configuración del proyecto** → **Cuentas de servicio**
@@ -171,6 +171,7 @@ Ir a https://render.com → **Sign up with GitHub**
 1. Dashboard → **New → PostgreSQL**
 2. Nombre: `gastos-db` | Plan: **Free** → **Create Database**
 3. Copiar la **"External Database URL"** (la necesitarás en el paso 3)
+### en mi caso 
 
 ### Paso 3 — Crear Web Service
 1. Dashboard → **New → Web Service**
@@ -182,6 +183,7 @@ Ir a https://render.com → **Sign up with GitHub**
     - **Plan**: **Free**
 4. **Environment Variables**:
     - `DATABASE_URL` → pegar la URL de PostgreSQL del paso 2
+    postgresql://gastos_db_eweq_user:1IDF18UuFVRLz1Y6oTtvy9e1WENborHz@dpg-d6occcma2pns73bo6jbg-a.oregon-postgres.render.com/gastos_db_eweq
     - `NODE_ENV` → `production`
     - `PORT` → `3000`
 5. **Create Web Service** → esperar ~5 min
